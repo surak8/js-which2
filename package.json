@@ -1,0 +1,26 @@
+{
+	"name": "js-which",
+	"version": "1.0.0",
+	"main": "src/index.js",
+	"description": "description of js-which",
+	"author": "rik <rcousens@colt.com> (http://www.colt.com/)",
+	"license": "MIT",
+	"keywords": [
+		"Colt",
+		"NODEJS"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git@ssh.dev.azure.com:v3/rcousens0730/js-which/js-which"
+	},
+	"dependencies": {
+		"fs": "@latest",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"start": "node src/index.js",
+		"clean": "rd /q/s node_modules",
+		"upgrade": "npx yarn-upgrade-all"
+	}
+}

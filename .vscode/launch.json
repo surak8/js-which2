@@ -1,0 +1,22 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "debug-current",
+			"program": "${file}",
+			"request": "launch",
+			"type": "node"
+		},
+		{
+			"name": "debug-server",
+			"program": "${workspaceFolder}/src/index.js",
+			"request": "launch",
+			"type": "node",
+			"args": [
+				"python.exe",
+				"du.exe",
+				"gitlog.bat"
+			]
+		}
+	]
+}
