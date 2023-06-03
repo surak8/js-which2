@@ -1,9 +1,13 @@
 "use strict";
 
+// #region required packages
 const path = require("path");
 const fs = require("fs");
+// #endregion required packages
 
+// #region class
 class UnixWhich {
+	// #region ctor
 	constructor(args) {
 		var sdpType;
 
@@ -20,12 +24,16 @@ class UnixWhich {
 		}
 		this._paths = this.findUniquePaths(process.env["PATH"].split(";"));
 	}
+	// #endregion ctor
 
+	// #region properties
 	get args() { return this._args; }
 	get debug() { return this._debug; }
 	get paths() { return this._paths; }
 	get showDuplicatePaths() { return this._showDupPaths; }
+	// #endregion properties
 
+	// #region method
 	findUniquePaths(paths) {
 		var tmp, ret = [], foundItems;
 
@@ -88,7 +96,10 @@ class UnixWhich {
 		else console.warn("version-3");
 		return ret;
 	}
+	// #endregion method
+
 }
+// #endregion class
 
 // #region main-line function
 /*
