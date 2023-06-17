@@ -15,7 +15,8 @@
 	},
 	"dependencies": {
 		"fs": "@latest",
-		"path": "^0.12.7"
+		"path": "^0.12.7",
+		"semver": "^7.5.2"
 	},
 	"devDependencies": {},
 	"scripts": {

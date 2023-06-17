@@ -1,25 +1,53 @@
 const EventEmitter = require("events");
 const path = require("path");
 const fs = require("fs");
+const semver = require("semver"); // semantic version comparator
 
+const FIELD_NAME = "showDuplicatePaths";
 // #region class
 class UnixWhich {
 	// #region ctor
 	constructor(args) {
-		var sdpType;
+		var sdpType, nodeVersion, haveProperty;
 
 		this._args = (args ? args : {});
 		this._showDupPaths = false;
 		this._debug = false;
 		this._emitter = new EventEmitter();
 
-		// Object.hasOwn ONLY WORKS AFTER 2021
-		if (Object.hasOwn(this.args, "showDuplicatePaths")) {
-			sdpType = typeof (this.args.showDuplicatePaths);
-			if (this.debug) console.debug(`TYPE is ${sdpType}`);
-			if (sdpType === "string") this._showDupPaths = this.args.showDuplicatePaths.toString() === "true";
-			else if (sdpType === "boolean") this._showDupPaths = this.args.showDuplicatePaths.toString() === "true";
+		// process.version contains the current version of NODE.
+		nodeVersion = (process.version.startsWith("v")) ?
+			process.version.substring(1) :
+			process.version;
+
+		// 18.15.0 WORKS!
+		// 14.17.0 -- no
+		// 14.10.0 -- no
+		// 13.14.0 -- no
+		// 12.22.12 -- no
+		// 12.22.0 -- no
+		console.log(
+			`node-version=${nodeVersion}\r\n` +
+			`current=${nodeVersion}\r\n`
+		);
+		if (semver.eq(nodeVersion, "12.3.1")) {
+			console.warn("using 'hasOwnProperty'");
+			haveProperty = Object.prototype.hasOwnProperty.call(this.args, FIELD_NAME);
+		} else {
+			console.warn("using 'hasOwn'");
+			haveProperty = Object.hasOwn(this.args, FIELD_NAME);
 		}
+
+		console.log(`version=${nodeVersion}, haveProp=${haveProperty}`);
+
+		//// Object.hasOwn ONLY WORKS AFTER 2021
+		//if (Object.hasOwn(this.args, FIELD_NAME)) {
+		//	sdpType = typeof (this.args.showDuplicatePaths);
+		//	if (this.debug) console.debug(`TYPE is ${sdpType}`);
+		//	if (sdpType === "string") this._showDupPaths = this.args.showDuplicatePaths.toString() === "true";
+		//	else if (sdpType === "boolean") this._showDupPaths = this.args.showDuplicatePaths.toString() === "true";
+		//}
+
 	}
 	// #endregion ctor
 
