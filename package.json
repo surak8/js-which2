@@ -1,6 +1,6 @@
 {
 	"name": "js-which",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"main": "src/index.js",
 	"description": "description of js-which",
 	"author": "rik <rcousens@colt.com> (http://www.colt.com/)",
