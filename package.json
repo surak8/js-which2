@@ -14,17 +14,20 @@
 		"url": "git@ssh.dev.azure.com:v3/rcousens0730/js-which/js-which"
 	},
 	"dependencies": {
-		"fs": "@latest",
 		"path": "^0.12.7"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.19.0",
 		"eslint": "^9.19.0",
+		"eslint-plugin-vue": "^9.32.0",
 		"globals": "^15.14.0"
 	},
 	"scripts": {
+		"clean":"npm run clean:nm && npm run clean:pl && npm run clean:yl" ,
+		"clean:nm":"IF EXIST node_modules RD /Q/S node_modules",
+		"clean:pl":"IF EXIST package-lock.json DEL /Q/S package-lock.json",
+		"clean:yl":"IF EXIST yarn.lock DEL /Q/S yarn.lock",
 		"start": "node src/index.js",
-		"clean": "rd /q/s node_modules",
 		"upgrade": "npx yarn-upgrade-all"
 	}
 }

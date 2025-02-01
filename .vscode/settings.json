@@ -1,0 +1,8 @@
+
+// Get eslint plugin, add this code to your settings.json
+
+ {
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  }
+ }
