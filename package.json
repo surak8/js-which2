@@ -17,7 +17,11 @@
 		"fs": "@latest",
 		"path": "^0.12.7"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"@eslint/js": "^9.19.0",
+		"eslint": "^9.19.0",
+		"globals": "^15.14.0"
+	},
 	"scripts": {
 		"start": "node src/index.js",
 		"clean": "rd /q/s node_modules",
